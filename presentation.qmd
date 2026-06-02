@@ -1,0 +1,306 @@
+---
+title: "R Packages for Importing Data Directly from the Internet"
+author: "Sukanya Sachdeva"
+institute: "Hochschule Fresenius"
+date: "2 June 2026"
+
+format:
+  revealjs:
+    theme: white
+    slide-number: true
+    progress: true
+    transition: fade
+    center: false
+---
+
+# Introduction
+
+## What is Data Import?
+
+- Data import is the process of transferring data from an external source into a target software system or application for storage, processing, or analysis.
+- It is an essential step in data analysis, it used in various areas as an essential tool.
+- The data can be imported from, CSV files, Excel files, APIs, Databases, Google Sheet, etc.
+
+---
+
+**Benefits**
+
+- Access to real-time information
+- Reduces manual downloads
+- Improves reproducibility
+- Saves time
+- Supports workflow automation
+
+---
+
+# Common Data Formats
+
+| Format | Description |
+|----------|----------|
+| CSV | Comma-separated values |
+| Excel | Spreadsheet files |
+| JSON | Web and API data |
+| TXT | Plain text files |
+| Google Sheets | Cloud spreadsheets |
+
+---
+
+# Popular R Packages
+
+| Package | Purpose |
+|----------|----------|
+| readr | Import CSV files |
+| readxl | Import Excel files |
+| rio | Import multiple formats |
+| data.table | Fast data import |
+| googlesheets4 | Access Google Sheets |
+
+---
+
+# readr Package
+
+## Purpose
+
+-The readr package is an R package used for importing and reading data files quickly and efficiently. It is part of the Tidyverse ecosystem and is commonly used in data analysis and data science workflows.
+
+-Handles CSV, TSV, fixed-width files, and other text-based datasets.
+
+-It is widely used because it is faster, more user-friendly, and provides cleaner output than many traditional base R functions. Data imported with readr is stored as a tibble, which is a modern version of a data frame and is easier to work with during data analysis.
+
+
+## Example
+
+- One of the most useful features of readr is its ability to import data directly from the internet. Instead of downloading a file manually, users can provide the URL of a dataset to the read_csv() function.
+
+- Readr then downloads and imports the data automatically.
+
+Example Code-
+
+
+```r
+read_csv("https://example.com/data.csv")
+```
+
+## Advantages
+
+- Readr offers several advantages. First, it reads files very quickly, which is especially useful when working with large datasets.
+
+- Second, it automatically detects the data type of each column, such as numeric values, text, or dates.
+
+- Third, it produces clear warning messages when there are problems in the data, helping users identify errors more easily.
+
+- Finally, readr integrates seamlessly with other tidyverse packages such as dplyr and ggplot2, making it a popular choice for data science workflows.
+
+---
+
+# readxl Package
+
+## Purpose
+
+- Readxl is an R package specifically designed for importing Microsoft Excel files directly into R.
+
+- It allows users to read both .xls and .xlsx file formats without requiring Microsoft Excel to be installed on their computer.
+
+- The package is widely used because Excel remains one of the most common formats for storing and sharing data in business, research, and industry
+
+## Example
+
+- Excel workbooks often contain multiple sheets.Readxl allows users to select a specific worksheet by name or position.
+
+- This is particularly useful when different sheets contain different types of information.
+
+- Example Code-
+
+```r
+read_excel("sales.xlsx")
+```
+
+## Advantages
+
+- Support for both XLS and XLSX files.
+
+- No requirement for Microsoft Excel installation.
+
+- Ability to read specific worksheets and ranges.
+
+- Fast and efficient performance.
+
+- Easy integration with tidyverse packages for further analysis.
+
+
+---
+
+# rio Package
+
+## Purpose
+
+- Rio stands for R Input and Output.
+
+- Rio is designed to make data import and export as simple as possible. One of its biggest advantages is that users do not need to remember different functions for different file types. Instead, rio automatically detects the file format and uses the appropriate method to import or export the data.
+
+- In R, different file formats often require different packages and functions. For example, CSV files may use readr, Excel files may use readxl, and SPSS files may require haven. Rio simplifies this process by providing a single function that works across many file formats. 
+
+## Example
+
+The two most important functions in rio are:
+
+- import() for reading data into R.
+
+- export() for saving data from R.
+
+Rio automatically identifies the file type based on the file extension and chooses the correct method behind the scenes.
+
+Example Code-
+
+```r
+import("data.csv")
+```
+
+## Advantages
+
+- Simple and consistent syntax.
+
+- Automatic file format detection.
+
+- Support for many different data formats.
+
+- Ability to import and export data.
+
+- Reduced need to learn multiple package-specific functions.
+
+
+---
+
+# data.table Package
+
+## Purpose
+
+- Data.table is one of the most powerful and efficient packages for data manipulation and data import in R.
+- It was developed to handle large datasets quickly and efficiently. While it is primarily known for fast data processing, it also includes functions for importing data, making it a valuable tool.
+- As datasets become larger, traditional data import methods can become outdated. Data.table was designed to address these challenges by providing high-performance data structures and fast file-reading capabilities. It is widely used in ares where large datasets must be processed efficiently.
+
+## Example
+
+- The most important import function in data.table is fread(), which stands for 'fast read'. It automatically detects separators, column names, and data types, reducing the amount of manual configuration required.
+
+Example Code-
+
+```r
+fread("large_data.csv")
+```
+
+
+## Advantages
+
+- Extremely fast data import and processing.
+- Efficient memory usage.
+- Automatic detection of data types.
+- Ability to handle very large datasets.
+- Direct import from internet-based sources.
+
+
+---
+
+# googlesheets4 Package
+
+## Purpose
+
+- Traditional spreadsheet packages such as readxl require a local Excel file. However, Google Sheets are stored online and can be updated by multiple users simultaneously. Googlesheets4 enables direct access to these online spreadsheets, ensuring that users always work with the most current version of the data.
+This makes it valuable for collaborative projects, research studies, and business reporting.
+- Because many organizations use Google Sheets for collaboration and data sharing, this package is particularly useful for accessing real-time data stored in the cloud.
+
+## Example
+
+- The main function for importing data is read_sheet().
+
+- Users simply provide the URL of a Google Sheet, and the package retrieves the data directly from the internet.
+
+- Example Code-
+
+```r
+read_sheet("Google_Sheet_URL")
+```
+
+## Advantages
+
+- Direct access to cloud-based spreadsheets.
+- Real-time data updates.
+- Easy collaboration among multiple users.
+- Ability to both read and write data.
+- Integration with other tidyverse packages.
+
+---
+
+# Package Comparison
+
+| Package | Best For |
+|----------|----------|
+| readr | CSV files |
+| readxl | Excel files |
+| rio | Multiple formats |
+| data.table | Large datasets |
+| googlesheets4 | Cloud spreadsheets |
+
+---
+
+# Applications
+
+## Academic Research
+
+Researchers frequently use these packages to import datasets from online repositories, government databases, and research websites. This allows them to access up-to-date information and automate the data collection process.
+
+Examples-
+
+- Importing World Bank data
+
+- Accessing public health datasets
+
+- Downloading census data
+
+
+## Business Anayltics
+
+Businesses use these packages to collect sales, customer, and operational data from online sources.
+Analysts can automatically import updated datasets and generate reports without manual intervention
+
+Example-
+
+- Sales performance tracking
+
+- Customer behavior analysis
+
+- Market research
+
+## Government and Public Data Analysis
+
+Many governments publish open data online. R packages can directly access these datasets, making it easier for researchers and policymakers to analyze public information.
+
+Examples-
+
+- Population statistics
+
+- Economic indicators
+
+- Environmental monitoring
+
+---
+
+# Conclusion
+
+- The ability to import data directly from the internet has become increasingly important in modern data analysis. R provides a variety of packages that simplify this process. While readr and data.table provide fast and efficient data loading, readxl supports Excel files, rio offers a unified interface for multiple file formats, and googlesheets4 enables direct interaction with cloud-based Google Sheets. 
+- By selecting the appropriate package based on requirements, users can make more effective use of data in R.
+
+---
+
+# References
+
+- Wickham, H., Hester, J., & Bryan, J. (2024). *readr*.
+- Wickham, H., & Bryan, J. (2024). *readxl*.
+- Chan, C. (2024). *rio*.
+- Dowle, M., & Srinivasan, A. (2024). *data.table*.
+- Bryan, J. (2024). *googlesheets4*.
+
+---
+
+# Thank You
+
